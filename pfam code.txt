@@ -1,0 +1,14 @@
+#Make sure to initialize these librarys
+library(Biobase)
+library(PFAM.db)
+##Same directions from the pfam.db documentation
+x = PFAMDE
+
+mapped_keys <- mappedkeys(x)
+#This list could be iterated through using another list but 
+#just copy it to the clipboard because it's only around 15000 pfam IDs
+xx <- as.list(x[mapped_keys])
+#create a dataframe from the list using the next commands
+a = data.frame(pfam = rep(names(xx), lapply(xx, length), Description = unlist(xx))
+##export in whatever format( I chose CSV)
+ write.csv(a, "PFAM.csv")
